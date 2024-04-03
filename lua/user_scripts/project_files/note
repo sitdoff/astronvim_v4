@@ -1,0 +1,60 @@
+# MEDIA SETTINGS
+
+    # settings.py
+    MEDIA_URL = "media/"
+    MEDIA_ROOT = BASE_DIR / "media"
+
+    # urls.py
+    from django.conf import settings
+    from django.conf.urls.static import static
+
+    if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# ----------------------------------------------------------------------------------------------------
+
+# DJANGO-TOOLBAR-SETTINGS
+# settings.py
+# INTERNAL_IPS = ["127.0.0.1"]
+if DEBUG:
+    import socket  # only if you haven't already imported this
+
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
+
+MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+]
+
+INSTALLED_APPS = [
+    "django_extensions",
+    "debug_toolbar",
+
+# urls.py
+urlpatterns = [
+    path("__debug__/", include("debug_toolbar.urls")),
+]
+# ----------------------------------------------------------------------------------------------------
+
+# Tools
+poetry add --group dev django-stubs[compatible-mypy] djangorestframework-stubs[compatible-mypy] django-stubs-ext
+# django-types djangorestframework-types 
+
+# settings.py
+import django_stubs_ext
+django_stubs_ext.monkeypatch()
+
+#Database settings
+import os
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_DB"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": os.getenv("POSTGRES_HOST"),
+        "PORT": os.getenv("POSTGRES_PORT"),
+    }
+}
+# ----------------------------------------------------------------------------------------------------

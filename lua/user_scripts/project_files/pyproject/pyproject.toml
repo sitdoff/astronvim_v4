@@ -1,0 +1,26 @@
+[tool.pyright]
+reportIncompatibleMethodOverride = false
+reportIncompatibleVariableOverride = false
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main", "mypy_drf_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "<project_name>.settings"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[tool.djlint]
+profile="django"
+blank_line_before_tag="load,extends,include,block"
+blank_line_after_tag="load,extends,include,endblock"
+indent=4
+ignore = "H006,"
+# line_break_after_multiline_tag=true
+close_void_tags=true
+custom_blocks="cache"
+
