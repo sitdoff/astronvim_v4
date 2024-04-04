@@ -10,6 +10,11 @@ return {
       "vim",
       "python",
       "html",
+      "htmldjango",
+      "css",
+      "javascript",
+      "bash",
+
       -- add more arguments for adding more treesitter parsers
     })
   end,

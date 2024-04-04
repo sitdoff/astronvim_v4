@@ -80,4 +80,50 @@ return {
       )
     end,
   },
+  {
+    "mfussenegger/nvim-dap-python",
+    config = function()
+      require("dap-python").setup "~/.virtualenvs/debugpy/bin/python"
+      local dap = require "dap"
+      -- dap.adapters.python = {
+      -- 	type = "executable",
+      -- 	command = "~/.virtualenvs/debugpy/bin/python",
+      -- 	args = { "-m", "debugpy.adapter" },
+      -- }
+      --
+      table.insert(dap.configurations.python, {
+        type = "python",
+        request = "launch",
+        name = "Django",
+        program = vim.fn.getcwd() .. "/manage.py", -- NOTE: Adapt path to manage.py as needed
+        args = { "runserver", "--noreload" },
+      })
+      table.insert(dap.configurations.python, {
+        type = "python",
+        request = "launch",
+        name = "Django tests",
+        program = vim.fn.getcwd() .. "/manage.py", -- NOTE: Adapt path to manage.py as needed
+        args = { "test" },
+      })
+      table.insert(dap.configurations.python, {
+        type = "python",
+        request = "attach",
+        name = "Attach remote (with path mapping)",
+        connect = function()
+          local host = vim.fn.input "Host [127.0.0.1]: "
+          host = host ~= "" and host or "127.0.0.1"
+          local port = tonumber(vim.fn.input "Port [5678]: ") or 5678
+          return { host = host, port = port }
+        end,
+        pathMappings = function()
+          local cwd = "${workspaceFolder}"
+          local local_path = vim.fn.input("Local path mapping [" .. cwd .. "]: ")
+          local_path = local_path ~= "" and local_path or cwd
+          local remote_path = vim.fn.input "Remote path mapping [.]: "
+          remote_path = remote_path ~= "" and remote_path or "."
+          return { { localRoot = local_path, remoteRoot = remote_path } }
+        end,
+      })
+    end,
+  },
 }

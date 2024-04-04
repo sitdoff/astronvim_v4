@@ -14,6 +14,13 @@ return {
       -- Set a formatter
       -- null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier,
+      -- null_ls.builtins.formatting.prettierd,
+      -- null_ls.builtins.diagnostics.flake8,
+      -- null_ls.builtins.diagnostics.djlint,
+      -- null_ls.builtins.formatting.stylua,
+      -- null_ls.builtins.formatting.black,
+      -- null_ls.builtins.formatting.isort,
+      -- null_ls.builtins.formatting.djlint,
     }
     return config -- return final config table
   end,
