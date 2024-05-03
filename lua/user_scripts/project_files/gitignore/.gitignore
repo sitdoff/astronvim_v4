@@ -16,4 +16,6 @@ db.sqlite3
 .pylintrc
 .perttierrc.toml
 pyproject.toml
-
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
