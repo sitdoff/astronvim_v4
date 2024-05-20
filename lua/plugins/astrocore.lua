@@ -20,6 +20,8 @@ return {
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
       virtual_text = true,
+      signs = false,
+      update_in_insert = false,
       underline = true,
     },
     -- vim options can be configured here
