@@ -15,7 +15,7 @@ return { -- override nvim-cmp plugin
       { name = "buffer", priority = 500 },
       { name = "path", priority = 250 },
       { name = "emoji", priority = 700 }, -- add new source
-      { name = "codeium", priority = 700 }, -- add new source
+      { name = "codeium", priority = 250 }, -- add new source
     }
   end,
 }
