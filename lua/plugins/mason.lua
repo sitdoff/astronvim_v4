@@ -17,6 +17,7 @@ return {
                 "marksman",
                 "jsonls",
                 "ts_ls",
+                "eslint",
                 -- add more arguments for adding more language servers
             })
         end,
@@ -36,6 +37,7 @@ return {
                 "djlint",
                 "isort",
                 "prettierd",
+                "eslint_d",
                 -- add more arguments for adding more null-ls sources
             })
         end,
