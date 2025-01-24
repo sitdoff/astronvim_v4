@@ -18,6 +18,7 @@ return {
                 "jsonls",
                 "ts_ls",
                 "eslint",
+                "bashls",
                 -- add more arguments for adding more language servers
             })
         end,
@@ -38,6 +39,8 @@ return {
                 "isort",
                 "prettierd",
                 "eslint_d",
+                "shellcheck",
+                "shfmt",
                 -- add more arguments for adding more null-ls sources
             })
         end,
