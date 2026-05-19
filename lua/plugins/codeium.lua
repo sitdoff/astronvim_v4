@@ -1,9 +1,40 @@
+-- return {
+--     "Exafunction/codeium.nvim",
+--     event = "Bufenter",
+--     dependencies = {
+--         "nvim-lua/plenary.nvim",
+--         "hrsh7th/nvim-cmp",
+--     },
+--     config = function() require("codeium").setup {} end,
+-- }
 return {
     "Exafunction/codeium.nvim",
-    event = "Bufenter",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        "hrsh7th/nvim-cmp",
+    cmd = "Codeium",
+    event = "InsertEnter",
+    build = ":Codeium Auth",
+    opts = {
+        virtual_text = {
+            key_bindings = {
+                accept = false, -- handled by completion engine
+            },
+        },
     },
-    config = function() require("codeium").setup {} end,
+    specs = {
+        {
+            "AstroNvim/astrocore",
+            opts = {
+                options = {
+                    g = {
+                        -- set the ai_accept function
+                        ai_accept = function()
+                            if require("codeium.virtual_text").get_current_completion_item() then
+                                vim.api.nvim_input(require("codeium.virtual_text").accept())
+                                return true
+                            end
+                        end,
+                    },
+                },
+            },
+        },
+    },
 }

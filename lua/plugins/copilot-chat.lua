@@ -1,0 +1,41 @@
+-- Отключил до лучших времён
+-- return {
+--     {
+--         "CopilotC-Nvim/CopilotChat.nvim",
+--         dependencies = {
+--             { "nvim-lua/plenary.nvim", branch = "master" },
+--         },
+--         build = "make tiktoken",
+--         opts = {
+--             language = "ru",
+--             completion = {
+--                 nvim_cmp = true,
+--             },
+--         },
+--         keys = {
+--             { "<F8>", function() require("CopilotChat").open() end, desc = "CopilotChat: Открыть чат" },
+--             {
+--                 "<leader>ji",
+--                 function() require("CopilotChat").toggle() end,
+--                 desc = "CopilotChat: Переключить чат",
+--             },
+--             {
+--                 "<leader>jp",
+--                 function() require("CopilotChat").prompt() end,
+--                 desc = "CopilotChat: Ввести запрос",
+--             },
+--             {
+--
+--                 "<leader>ja",
+--                 function() require("CopilotChat").ask() end,
+--                 mode = "v",
+--                 desc = "CopilotChat: Спросить по выделенному",
+--             },
+--             {
+--                 "<leader>jl",
+--                 function() require("CopilotChat").clear() end,
+--                 desc = "CopilotChat: Очистить чат",
+--             },
+--         },
+--     },
+-- }
