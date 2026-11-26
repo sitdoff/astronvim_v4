@@ -73,6 +73,15 @@ return {
             n = {
                 -- second key is the lefthand side of the map
 
+                ["<Leader>fW"] = {
+                    function()
+                        require("telescope.builtin").live_grep {
+                            additional_args = { "--hidden", "--no-ignore" },
+                        }
+                    end,
+                    desc = "Find words in all files",
+                },
+
                 -- navigate buffer tabs with `H` and `L`
                 L = {
                     function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
